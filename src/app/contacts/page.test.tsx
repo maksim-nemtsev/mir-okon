@@ -13,7 +13,7 @@ describe('ContactsPage', () => {
         level: 1,
       })
     ).toBeInTheDocument();
-    expect(screen.getByText('info@mirokon.ru')).toBeInTheDocument();
+    expect(screen.getByText('mir-okon.com@yandex.ru')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Ваше имя')).toBeInTheDocument();
     expect(
       screen.getByRole('button', { name: 'Отправить заявку' })

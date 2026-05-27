@@ -11,11 +11,11 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
 const contacts = [
-  { label: '+7 (495) 987-45-35', icon: Phone },
-  { label: '+7 (800) 200-38-02', icon: Phone },
-  { label: 'info@mirokon.ru', icon: Mail },
+  { label: '+7 (8652) 29‒29‒70', icon: Phone },
+  { label: '+7 (8652) 29‒29‒80', icon: Phone },
+  { label: 'mir-okon.com@yandex.ru', icon: Mail },
   {
-    label: 'Московская обл., г. Домодедово, с. Растуново, д.51, офис 2',
+    label: 'Ставрополь, улица Ленина, 31',
     icon: MapPin,
   },
 ] as const;
@@ -49,9 +49,6 @@ export default function ContactsPage() {
             </CardContent>
           </Card>
           <Card className="rounded-3xl border-slate-200 bg-slate-50">
-            <CardHeader>
-              <CardTitle className="text-2xl">Оставить заявку</CardTitle>
-            </CardHeader>
             <CardContent>
               <form className="grid gap-4">
                 <Input className="min-h-12 bg-white" placeholder="Ваше имя" />

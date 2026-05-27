@@ -1,8 +1,9 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-family-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-family-poppins: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-family-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-family-poppins:
+    var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   --container-padding: 2rem;
   --container-max-width-2xl: 1400px;
@@ -16,7 +17,7 @@
   --color-primary-foreground: oklch(98% 0.01 270);
   --color-secondary: oklch(80% 0.1 190);
   --color-secondary-foreground: oklch(25% 0.15 260);
-  --color-accent: oklch(80% 0.15 60);
+  --color-accent: oklch(86% 0.08 235);
   --color-accent-foreground: oklch(25% 0.15 260);
   --color-muted: oklch(90% 0.02 260);
   --color-muted-foreground: oklch(60% 0.05 260);
@@ -38,7 +39,7 @@
     --secondary-foreground: oklch(25% 0.15 260);
     --muted: oklch(90% 0.02 260);
     --muted-foreground: oklch(60% 0.05 260);
-    --accent: oklch(80% 0.15 60);
+    --accent: oklch(86% 0.08 235);
     --accent-foreground: oklch(25% 0.15 260);
     --border: oklch(88% 0.03 260);
     --input: oklch(88% 0.03 260);
@@ -58,7 +59,7 @@
     --secondary-foreground: oklch(90% 0.02 260);
     --muted: oklch(30% 0.04 260);
     --muted-foreground: oklch(65% 0.05 260);
-    --accent: oklch(75% 0.15 60);
+    --accent: oklch(62% 0.12 235);
     --accent-foreground: oklch(90% 0.02 260);
     --border: oklch(30% 0.04 260);
     --input: oklch(30% 0.04 260);

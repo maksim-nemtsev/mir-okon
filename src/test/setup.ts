@@ -36,7 +36,6 @@ vi.mock('framer-motion', () => ({
 
 vi.mock('next/font/google', () => ({
   Inter: () => ({ variable: 'font-inter' }),
-  Poppins: () => ({ variable: 'font-poppins' }),
 }));
 
 vi.mock('next/image', () => ({

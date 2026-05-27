@@ -15,6 +15,18 @@ describe('ProductsPage', () => {
     ).toBeInTheDocument();
     expect(screen.getByText('Roto AL 300')).toBeInTheDocument();
     expect(
+      screen
+        .getAllByRole('link', { name: /Узнать больше/i })
+        .map((link) => link.getAttribute('href'))
+    ).toEqual(
+      expect.arrayContaining([
+        '/products/roto-al-300',
+        '/products/roto-al-designo',
+        '/products/roto-patio-alversa',
+        '/products/roto-patio-fold',
+      ])
+    );
+    expect(
       screen.getAllByRole('link', { name: /Получить расчет/i })
     ).toHaveLength(4);
   });

@@ -20,13 +20,24 @@ describe('RotoPage', () => {
 
   it('renders product calls to action for all product cards', () => {
     render(<RotoPage />);
-
-    expect(
-      screen.getAllByRole('link', { name: 'Оставить заявку' })
-    ).toHaveLength(4);
     expect(
       screen.getAllByRole('link', { name: /Узнать больше/i })
     ).toHaveLength(7);
+    expect(
+      screen
+        .getAllByRole('link', { name: 'Узнать больше' })
+        .map((link) => link.getAttribute('href'))
+    ).toEqual(
+      expect.arrayContaining([
+        '/products/roto-al-300',
+        '/products/roto-al-designo',
+        '/products/roto-patio-alversa',
+        '/products/roto-patio-fold',
+        '/articles/window-life-cycle',
+        '/articles/choose-aluminum-profile',
+        '/articles/warm-aluminum-profile',
+      ])
+    );
   });
 
   it('links menu items to App Router pages', () => {

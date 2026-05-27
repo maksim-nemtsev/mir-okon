@@ -64,9 +64,6 @@ const BrandLogo = () => (
     className="inline-flex flex-col leading-none"
     aria-label="Мир Окон systems"
   >
-    <span className="ml-1 text-[10px] font-medium uppercase tracking-[0.35em] text-slate-500">
-      systems
-    </span>
     <span className="flex items-end gap-2">
       <span className="text-3xl font-black tracking-[-0.08em] text-slate-950 sm:text-4xl">
         Мир Окон
@@ -113,17 +110,16 @@ const SiteHeader = () => {
             href="tel:+78002003802"
             className="inline-flex items-center gap-2 text-base font-semibold text-[#0284c7]"
           >
-            <Phone className="h-4 w-4" />8 (800) 200-38-02
+            <Phone className="h-4 w-4" />
+            +7 (8652) 29‒29‒70
           </a>
           <a
             href="tel:+74959874535"
             className="inline-flex items-center gap-2 text-base font-semibold text-[#0284c7]"
           >
-            <Phone className="h-4 w-4" />8 (495) 987-45-35
+            <Phone className="h-4 w-4" />
+            +7 (8652) 29‒29‒80
           </a>
-          <Button asChild variant="brand">
-            <Link href="#contacts">Заказать звонок</Link>
-          </Button>
         </div>
         <Button
           type="button"
@@ -280,11 +276,8 @@ const ProductCard = ({ product }: { product: ProductCard }) => (
     </CardHeader>
     <CardContent className="flex-1 px-0 pb-0 pt-5">
       <div className="grid gap-3">
-        <Button asChild variant="brand">
-          <Link href="#contacts">Оставить заявку</Link>
-        </Button>
         <Button asChild variant="secondary">
-          <Link href="#details">Узнать больше</Link>
+          <Link href={`/products/${product.slug}`}>Узнать больше</Link>
         </Button>
       </div>
       <p className="mt-5 text-center text-sm leading-6 text-slate-600">
@@ -377,7 +370,7 @@ const ArticleCard = ({ article }: { article: ArticleCard }) => (
     </CardHeader>
     <CardFooter>
       <Button asChild variant="slate">
-        <Link href="#contacts">
+        <Link href={`/articles/${article.slug}`}>
           Узнать больше
           <ArrowRight className="h-4 w-4" />
         </Link>

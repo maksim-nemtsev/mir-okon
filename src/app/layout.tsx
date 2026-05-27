@@ -1,6 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
-import { Inter, Poppins } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 
 import { QueryProvider } from '@/providers/query';
@@ -9,17 +9,10 @@ import '@/styles/globals.css';
 import type { ChildrenProps } from '@/types';
 
 const inter = Inter({
-  subsets: ['latin'],
+  subsets: ['latin', 'cyrillic'],
   display: 'swap',
   variable: '--font-inter',
   adjustFontFallback: false,
-});
-
-const poppins = Poppins({
-  weight: ['400', '500', '600', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-poppins',
 });
 
 export const metadata: Metadata = {
@@ -70,7 +63,7 @@ export default function RootLayout({ children }: ChildrenProps) {
   return (
     <html lang="ru" suppressHydrationWarning className="overflow-x-hidden">
       <body
-        className={`${inter.variable} ${poppins.variable} font-sans antialiased overflow-x-hidden`}
+        className={`${inter.variable} font-sans antialiased overflow-x-hidden`}
       >
         <RootLayoutContent>{children}</RootLayoutContent>
       </body>
