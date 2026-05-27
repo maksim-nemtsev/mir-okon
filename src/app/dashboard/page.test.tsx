@@ -16,16 +16,12 @@ vi.mock('@clerk/nextjs', () => ({
 }));
 
 describe('DashboardPage', () => {
-  it('renders dashboard cards and sign out action', () => {
+  it('renders a fallback when Clerk is not configured', () => {
     render(<DashboardPage />);
 
     expect(
-      screen.getByRole('heading', { name: 'Dashboard' })
+      screen.getByRole('heading', { name: 'Authentication is not configured' })
     ).toBeInTheDocument();
-    expect(screen.getByText('Welcome, Alex!')).toBeInTheDocument();
-    expect(
-      screen.getByRole('button', { name: /Sign Out/i })
-    ).toBeInTheDocument();
-    expect(screen.getByText('Account Stats')).toBeInTheDocument();
+    expect(screen.getByText(/enable the dashboard/i)).toBeInTheDocument();
   });
 });
