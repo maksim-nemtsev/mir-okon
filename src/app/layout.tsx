@@ -1,5 +1,4 @@
 // app/layout.tsx
-import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
@@ -22,8 +21,6 @@ const poppins = Poppins({
   display: 'swap',
   variable: '--font-poppins',
 });
-
-const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 export const metadata: Metadata = {
   title: 'Фурнитура Roto | Мир Окон',
@@ -70,7 +67,7 @@ function RootLayoutContent({ children }: ChildrenProps) {
 }
 
 export default function RootLayout({ children }: ChildrenProps) {
-  const document = (
+  return (
     <html lang="ru" suppressHydrationWarning className="overflow-x-hidden">
       <body
         className={`${inter.variable} ${poppins.variable} font-sans antialiased overflow-x-hidden`}
@@ -78,15 +75,5 @@ export default function RootLayout({ children }: ChildrenProps) {
         <RootLayoutContent>{children}</RootLayoutContent>
       </body>
     </html>
-  );
-
-  if (!clerkPublishableKey) {
-    return document;
-  }
-
-  return (
-    <ClerkProvider publishableKey={clerkPublishableKey}>
-      {document}
-    </ClerkProvider>
   );
 }

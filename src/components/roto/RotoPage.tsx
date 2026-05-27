@@ -71,12 +71,6 @@ const BrandLogo = () => (
       <span className="text-3xl font-black tracking-[-0.08em] text-slate-950 sm:text-4xl">
         Мир Окон
       </span>
-      <Badge
-        variant="brand"
-        className="mb-1 rounded-sm px-2 py-1 text-xs font-black"
-      >
-        PROF
-      </Badge>
     </span>
   </Link>
 );

@@ -1,6 +1,5 @@
 'use client';
 
-import { SignInButton, SignOutButton, useUser } from '@clerk/nextjs';
 import { Github, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -10,7 +9,6 @@ import ThemeToggle from './ThemeToggle';
 
 export default function MainNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { isSignedIn, user } = useUser();
 
   const handleToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -27,45 +25,14 @@ export default function MainNavbar() {
 
         <nav className="hidden md:flex items-center gap-8">
           <Link
-            href="/posts"
-            className="text-sm font-medium text-(--foreground) hover:text-(--primary) transition-colors duration-200"
-          >
-            Posts
-          </Link>
-          {isSignedIn && (
-            <Link
-              href="/dashboard"
-              className="text-sm font-medium text-(--foreground) hover:text-(--primary) transition-colors duration-200"
-            >
-              Dashboard
-            </Link>
-          )}
-          <Link
             href="https://github.com/AnwarHossainSR/nextjs-16-template"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub"
             className="text-(--foreground) hover:text-(--primary) transition-colors duration-200"
           >
             <Github className="h-5 w-5" />
           </Link>
-          {isSignedIn ? (
-            <>
-              <span className="text-sm font-medium text-(--foreground)">
-                {user?.firstName || user?.emailAddresses[0].emailAddress}
-              </span>
-              <SignOutButton>
-                <Button variant="ghost" size="sm">
-                  Sign Out
-                </Button>
-              </SignOutButton>
-            </>
-          ) : (
-            <SignInButton mode="modal">
-              <Button variant="ghost" size="sm">
-                Sign In
-              </Button>
-            </SignInButton>
-          )}
           <ThemeToggle />
         </nav>
 
@@ -86,50 +53,17 @@ export default function MainNavbar() {
         {mobileMenuOpen && (
           <div className="fixed inset-x-0 top-16 z-50 bg-(--background) border-b border-(--border) shadow-lg md:hidden animate-in slide-in-from-top duration-300 max-w-full">
             <div className="container py-6 flex flex-col space-y-4 px-4 sm:px-6 max-w-full">
-              <Link
-                href="/posts"
-                className="text-sm font-medium text-(--foreground) hover:text-(--primary) transition-colors duration-200"
-                onClick={handleToggle}
-              >
-                Posts
-              </Link>
-              {isSignedIn && (
-                <Link
-                  href="/dashboard"
-                  className="text-sm font-medium text-(--foreground) hover:text-(--primary) transition-colors duration-200"
-                  onClick={handleToggle}
-                >
-                  Dashboard
-                </Link>
-              )}
               <div className="flex items-center justify-between">
                 <Link
                   href="https://github.com/AnwarHossainSR/nextjs-16-template"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="GitHub"
                   className="text-(--foreground) hover:text-(--primary) transition-colors duration-200"
                   onClick={handleToggle}
                 >
                   <Github className="h-5 w-5" />
                 </Link>
-                {isSignedIn ? (
-                  <>
-                    <span className="text-sm font-medium text-(--foreground)">
-                      {user?.firstName || user?.emailAddresses[0].emailAddress}
-                    </span>
-                    <SignOutButton>
-                      <Button variant="ghost" size="sm">
-                        Sign Out
-                      </Button>
-                    </SignOutButton>
-                  </>
-                ) : (
-                  <SignInButton mode="modal">
-                    <Button variant="ghost" size="sm">
-                      Sign In
-                    </Button>
-                  </SignInButton>
-                )}
                 <ThemeToggle />
               </div>
             </div>

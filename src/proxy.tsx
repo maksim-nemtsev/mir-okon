@@ -1,8 +1,5 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { NextResponse, type NextRequest } from 'next/server';
 
-const isProtectedRoute = createRouteMatcher(['/dashboard(.*)']);
-const isWebhookRoute = createRouteMatcher(['/api/webhooks/clerk(.*)']);
 const safeMethods = new Set(['GET', 'HEAD', 'OPTIONS']);
 
 const isSameOriginRequest = (req: NextRequest) => {
@@ -21,19 +18,19 @@ const isSameOriginRequest = (req: NextRequest) => {
   }
 };
 
-export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) await auth.protect();
-
+export function proxy(req: NextRequest) {
   const isUnsafeApiRequest =
     req.nextUrl.pathname.startsWith('/api/') && !safeMethods.has(req.method);
 
-  if (isUnsafeApiRequest && !isWebhookRoute(req) && !isSameOriginRequest(req)) {
+  if (isUnsafeApiRequest && !isSameOriginRequest(req)) {
     return NextResponse.json(
       { error: 'Invalid cross-origin request' },
       { status: 403 }
     );
   }
-});
+
+  return NextResponse.next();
+}
 
 export const config = {
   matcher: [

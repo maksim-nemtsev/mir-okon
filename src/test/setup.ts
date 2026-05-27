@@ -56,8 +56,3 @@ vi.mock('next/image', () => ({
       ...props,
     }),
 }));
-
-vi.mock('@clerk/nextjs', () => ({
-  ClerkProvider: ({ children }: { children: React.ReactNode }) =>
-    React.createElement(React.Fragment, null, children),
-}));

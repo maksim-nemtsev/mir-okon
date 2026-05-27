@@ -3,16 +3,6 @@ import { describe, expect, it, vi } from 'vitest';
 
 import MainNavbar from './Navbar';
 
-vi.mock('@clerk/nextjs', () => ({
-  SignInButton: ({ children }: { children: React.ReactNode }) => (
-    <>{children}</>
-  ),
-  SignOutButton: ({ children }: { children: React.ReactNode }) => (
-    <>{children}</>
-  ),
-  useUser: () => ({ isSignedIn: false, user: null }),
-}));
-
 vi.mock('next-themes', () => ({
   useTheme: () => ({
     theme: 'light',
@@ -21,17 +11,19 @@ vi.mock('next-themes', () => ({
 }));
 
 describe('MainNavbar', () => {
-  it('renders navigation links and sign in action', () => {
+  it('renders the site brand and utility actions', () => {
     render(<MainNavbar />);
 
     expect(screen.getByRole('link', { name: 'NextBoiler' })).toHaveAttribute(
       'href',
       '/'
     );
-    expect(screen.getByRole('link', { name: 'Posts' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /github/i })).toHaveAttribute(
       'href',
-      '/posts'
+      'https://github.com/AnwarHossainSR/nextjs-16-template'
     );
-    expect(screen.getByRole('button', { name: 'Sign In' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Toggle theme' })
+    ).toBeInTheDocument();
   });
 });
