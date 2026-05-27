@@ -1,5 +1,4 @@
 // app/api/webhooks/clerk/route.ts
-import Env from '@/env';
 import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { Webhook } from 'svix';
@@ -48,7 +47,7 @@ const getPrimaryEmail = (data: ClerkUserWebhookData) =>
   data.email_addresses?.find((email) => email.email_address);
 
 export async function POST(req: Request) {
-  const { CLERK_WEBHOOK_SECRET } = Env;
+  const { CLERK_WEBHOOK_SECRET } = process.env;
   if (!CLERK_WEBHOOK_SECRET) {
     return NextResponse.json(
       { error: 'Webhook secret not configured' },
