@@ -58,14 +58,11 @@
 
 ## Forms
 
-* react-hook-form
-* yup validation
+* Static forms only unless backend integration is added
 
 ## API
 
-* axios
-* server actions when possible
-* @tanstack/react-query
+* No API/data-fetching layer for the current static site
 
 ## Animations
 

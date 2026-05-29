@@ -83,7 +83,7 @@ export default function PartnersPage() {
                 ))}
               </ul>
               <Button asChild variant="brand" className="mt-8">
-                <Link href="/#contacts">Обсудить сотрудничество</Link>
+                <Link href="/contacts">Обсудить сотрудничество</Link>
               </Button>
             </CardContent>
           </Card>

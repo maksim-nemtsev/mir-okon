@@ -9,7 +9,7 @@ import {
 
 const deliverySteps = [
   {
-    title: 'Заявка и спецификация',
+    title: 'Согласование заказа',
     description:
       'Фиксируем состав заказа, объемы, адрес поставки и требования к срокам.',
     icon: ClipboardCheck,

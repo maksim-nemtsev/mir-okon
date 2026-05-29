@@ -5,15 +5,16 @@ import {
   PageSection,
   PageShell,
 } from '@/components/roto/PagePrimitives';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 
 const contacts = [
-  { label: '+7 (8652) 29‒29‒70', icon: Phone },
-  { label: '+7 (8652) 29‒29‒80', icon: Phone },
-  { label: 'mir-okon.com@yandex.ru', icon: Mail },
+  { label: '+7 (8652) 29‒29‒70', icon: Phone, href: 'tel:+78652292970' },
+  { label: '+7 (8652) 29‒29‒80', icon: Phone, href: 'tel:+78652292980' },
+  {
+    label: 'mir-okon.com@yandex.ru',
+    icon: Mail,
+    href: 'mailto:mir-okon.com@yandex.ru',
+  },
   {
     label: 'Ставрополь, улица Ленина, 31',
     icon: MapPin,
@@ -26,47 +27,43 @@ export default function ContactsPage() {
       <PageHero
         eyebrow="Контакты"
         title="Свяжитесь с Мир Окон"
-        description="Напишите или позвоните нам, чтобы получить консультацию, расчет или технические материалы по фурнитуре Roto."
+        description="Позвоните или напишите нам, чтобы получить консультацию и технические материалы по фурнитуре Roto."
       />
       <PageSection>
-        <div className="grid gap-8 lg:grid-cols-[0.8fr_1fr]">
-          <Card className="rounded-3xl border-slate-200 bg-white">
-            <CardHeader>
-              <CardTitle className="text-2xl">Контактная информация</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="mt-8 grid gap-5">
-                {contacts.map(({ label, icon: Icon }) => (
+        <Card className="mx-auto max-w-3xl rounded-3xl border-slate-200 bg-white">
+          <CardHeader>
+            <CardTitle className="text-2xl">Контактная информация</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-5">
+              {contacts.map(({ label, icon: Icon, ...item }) => {
+                const content = (
+                  <>
+                    <Icon className="mt-1 h-5 w-5 shrink-0 text-[#0284c7]" />
+                    {label}
+                  </>
+                );
+
+                return 'href' in item && item.href ? (
+                  <a
+                    key={label}
+                    href={item.href}
+                    className="flex gap-3 text-sm leading-7 text-slate-700 transition hover:text-[#0284c7]"
+                  >
+                    {content}
+                  </a>
+                ) : (
                   <p
                     key={label}
                     className="flex gap-3 text-sm leading-7 text-slate-700"
                   >
-                    <Icon className="mt-1 h-5 w-5 shrink-0 text-[#0284c7]" />
-                    {label}
+                    {content}
                   </p>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="rounded-3xl border-slate-200 bg-slate-50">
-            <CardContent>
-              <form className="grid gap-4">
-                <Input className="min-h-12 bg-white" placeholder="Ваше имя" />
-                <Input
-                  className="min-h-12 bg-white"
-                  placeholder="Телефон или e-mail"
-                />
-                <Textarea
-                  className="min-h-32 bg-white"
-                  placeholder="Опишите задачу"
-                />
-                <Button type="submit" variant="brand">
-                  Отправить заявку
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
       </PageSection>
     </PageShell>
   );

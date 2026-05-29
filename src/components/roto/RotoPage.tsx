@@ -34,7 +34,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 
 const sectionMotion = {
@@ -62,7 +61,7 @@ const BrandLogo = () => (
   <Link
     href="/"
     className="inline-flex flex-col leading-none"
-    aria-label="Мир Окон systems"
+    aria-label="Мир Окон"
   >
     <span className="flex items-end gap-2">
       <span className="text-3xl font-black tracking-[-0.08em] text-slate-950 sm:text-4xl">
@@ -343,7 +342,7 @@ const DetailsSection = () => (
             <span className="font-bold text-slate-950">
               Где купить фурнитуру Roto?
             </span>{' '}
-            Оставьте заявку, и мы подберем стандартный или индивидуальный
+            Свяжитесь с нами, и мы подберем стандартный или индивидуальный
             комплект с доставкой по всей России.
           </p>
         </div>
@@ -424,25 +423,13 @@ const SiteFooter = () => (
           ))}
         </div>
         <div className="mt-8">
-          <p className="text-sm font-semibold">Подписаться на новости</p>
-          <form className="mt-3 flex flex-col gap-3 sm:flex-row">
-            <label className="sr-only" htmlFor="email">
-              E-mail
-            </label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="E-mail *"
-              className="min-h-11 flex-1 bg-white text-slate-900"
-            />
-            <Button type="submit" variant="brand" className="min-h-11 px-5">
-              Подписаться
-            </Button>
-          </form>
+          <Button asChild variant="brand" className="min-h-11 w-fit">
+            <Link href="/contacts">Связаться с нами</Link>
+          </Button>
         </div>
         <p className="mt-8 max-w-sm text-sm leading-6 text-white/70">
-          Подпишитесь на наш телеграм и получите все технические каталоги в
-          электронном виде.
+          Напишите или позвоните нам, чтобы получить технические каталоги и
+          консультацию по подбору фурнитуры.
         </p>
         <Send className="mt-4 h-6 w-6" />
       </div>

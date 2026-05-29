@@ -39,16 +39,10 @@ export default function ProductsPage() {
                   {product.description}
                 </p>
               </CardContent>
-              <CardFooter className="flex flex-col items-start gap-2">
+              <CardFooter>
                 <Button asChild variant="link" className="px-0 text-[#0284c7]">
                   <Link href={`/products/${product.slug}`}>
                     Узнать больше
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="link" className="px-0 text-[#0284c7]">
-                  <Link href="/#contacts">
-                    Получить расчет
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </Button>

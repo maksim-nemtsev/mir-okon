@@ -1,9 +1,7 @@
 import type { LucideIcon } from 'lucide-react';
 import {
   Building2,
-  Calculator,
   CalendarDays,
-  FileText,
   Mail,
   MapPin,
   Phone,
@@ -50,8 +48,6 @@ export const utilityLinks = [
   { label: 'Работаем по всей России', icon: MapPin },
   { label: 'Пн.-пт. с 9:00 до 18:00', icon: CalendarDays },
   { label: 'info@mirokon.ru', icon: Mail },
-  { label: 'Калькулятор', icon: Calculator },
-  { label: 'Заявка на расчет', icon: FileText },
 ] as const;
 
 export const navItems: NavItem[] = [

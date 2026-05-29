@@ -1,12 +1,9 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Toaster } from 'react-hot-toast';
+import type { ReactNode } from 'react';
 
-import { QueryProvider } from '@/providers/query';
-import { ThemeProvider } from '@/providers/theme';
 import '@/styles/globals.css';
-import type { ChildrenProps } from '@/types';
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -16,10 +13,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Фурнитура Roto | Мир Окон',
+  title: 'Мир Окон',
   description:
-    'Поставка фурнитуры Roto для алюминиевых окон, дверей и светопрозрачных конструкций.',
-  keywords: 'Roto, Мир Окон, алюминиевый профиль, фурнитура, окна, двери',
+    'Поставка фурнитуры для алюминиевых окон, дверей и светопрозрачных конструкций.',
+  keywords: 'Мир Окон, алюминиевый профиль, фурнитура, окна, двери',
   authors: [{ name: 'Мир Окон' }],
   creator: 'Мир Окон',
   metadataBase: new URL('https://your-domain.com'),
@@ -27,39 +24,26 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ru_RU',
     url: 'https://your-domain.com',
-    title: 'Фурнитура Roto | Мир Окон',
+    title: 'Мир Окон',
     description:
-      'Фурнитура Roto для алюминиевых оконных, дверных и фасадных систем.',
+      'Фурнитура для алюминиевых оконных, дверных и фасадных систем.',
     siteName: 'Мир Окон',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Фурнитура Roto | Мир Окон',
+    title: 'Мир Окон',
     description:
-      'Фурнитура Roto для алюминиевых оконных, дверных и фасадных систем.',
+      'Фурнитура для алюминиевых оконных, дверных и фасадных систем.',
   },
 };
 
-function RootLayoutContent({ children }: ChildrenProps) {
+function RootLayoutContent({ children }: { children: ReactNode }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-      <QueryProvider>
-        <main className="min-h-screen w-full overflow-x-hidden">
-          {children}
-        </main>
-        <Toaster
-          position="bottom-right"
-          toastOptions={{
-            className: 'bg-(--card) text-(--foreground) border-(--border)',
-            duration: 3000,
-          }}
-        />
-      </QueryProvider>
-    </ThemeProvider>
+    <main className="min-h-screen w-full overflow-x-hidden">{children}</main>
   );
 }
 
-export default function RootLayout({ children }: ChildrenProps) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ru" suppressHydrationWarning className="overflow-x-hidden">
       <body
