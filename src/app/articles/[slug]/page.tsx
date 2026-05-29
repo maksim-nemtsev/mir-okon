@@ -5,10 +5,10 @@ import {
   PageHero,
   PageSection,
   PageShell,
-} from '@/components/roto/PagePrimitives';
+} from '@/components/furniture/PagePrimitives';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { articles, getArticleBySlug } from '@/config/roto-page';
+import { articles, getArticleBySlug } from '@/config/furniture-page';
 
 type ArticlePageProps = {
   params: Promise<{

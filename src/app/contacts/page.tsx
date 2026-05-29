@@ -4,7 +4,7 @@ import {
   PageHero,
   PageSection,
   PageShell,
-} from '@/components/roto/PagePrimitives';
+} from '@/components/furniture/PagePrimitives';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const contacts = [

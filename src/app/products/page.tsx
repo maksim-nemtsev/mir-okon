@@ -5,7 +5,7 @@ import {
   PageHero,
   PageSection,
   PageShell,
-} from '@/components/roto/PagePrimitives';
+} from '@/components/furniture/PagePrimitives';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -14,7 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { products } from '@/config/roto-page';
+import { products } from '@/config/furniture-page';
 
 export default function ProductsPage() {
   return (

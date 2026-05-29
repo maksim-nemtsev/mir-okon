@@ -6,7 +6,7 @@ import {
   PageHero,
   PageSection,
   PageShell,
-} from '@/components/roto/PagePrimitives';
+} from '@/components/furniture/PagePrimitives';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 

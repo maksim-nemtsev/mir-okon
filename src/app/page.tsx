@@ -1,5 +1,5 @@
-import { RotoPage } from '@/components/roto/RotoPage';
+import { FurniturePage } from '@/components/furniture/FurniturePage';
 
 export default function Home() {
-  return <RotoPage />;
+  return <FurniturePage />;
 }

@@ -20,11 +20,11 @@ import {
   footerColumns,
   navItems,
   products,
-  rotoFeatures,
+  furnitureFeatures,
   utilityLinks,
   type ArticleCard,
   type ProductCard,
-} from '@/config/roto-page';
+} from '@/config/furniture-page';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -184,14 +184,14 @@ const HeroSection = () => (
       >
         <p className="mb-8 text-xs text-white/70">
           Главная &gt; Алюминиевый профиль в ассортименте &gt; Фурнитура &gt;
-          Фурнитура Roto
+          Фурнитура
         </p>
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-          Фурнитура Roto
+          Фурнитура
         </h1>
         <p className="mt-6 max-w-2xl text-base leading-8 text-white/75">
           Надежные комплектующие для алюминиевых окон, дверей и светопрозрачных
-          конструкций от официального дилера ROTO FRANK.
+          конструкций от официального дилера.
         </p>
       </motion.div>
       <motion.div
@@ -202,7 +202,7 @@ const HeroSection = () => (
       >
         <Image
           src="/images/Screenshot_2.png"
-          alt="Фурнитура Roto для алюминиевых конструкций"
+          alt="Фурнитура для алюминиевых конструкций"
           fill
           className="object-cover object-[78%_52%]"
           sizes="(min-width: 1024px) 520px, 100vw"
@@ -217,10 +217,10 @@ const IntroSection = () => (
     <Container className="grid gap-10 lg:grid-cols-[0.35fr_0.65fr] lg:items-center">
       <Card className="rounded-3xl border-slate-200 bg-white p-8">
         <p className="text-5xl font-black tracking-tight text-[#0284c7]">
-          Roto
+          Stublina
         </p>
         <div className="mt-6 grid gap-4">
-          {rotoFeatures.map(({ label, icon: Icon }) => (
+          {furnitureFeatures.map(({ label, icon: Icon }) => (
             <div key={label} className="flex items-center gap-3 text-[#0284c7]">
               <span className="rounded-full bg-sky-50 p-2">
                 <Icon className="h-5 w-5" />
@@ -250,9 +250,8 @@ const IntroSection = () => (
           )}
         </div>
         <p className="mt-8 text-sm leading-7 text-slate-600">
-          Компания «Мир Окон» является официальным дилером компании ROTO FRANK и
-          предлагает широкий ассортимент фурнитуры ROTO для алюминиевых
-          конструкций.
+          Компания «Мир Окон» является официальным дилером компании и предлагает
+          широкий ассортимент фурнитуры для алюминиевых конструкций.
         </p>
       </div>
     </Container>
@@ -295,7 +294,7 @@ const ProductsSection = () => (
     <Container>
       <div className="mx-auto max-w-3xl text-center">
         <p className="text-sm leading-7 text-slate-600">
-          Компания «Мир Окон» предлагает широкий ассортимент фурнитуры ROTO для
+          Компания «Мир Окон» предлагает широкий ассортимент фурнитуры для
           алюминиевых конструкций: от классических оконных решений до
           современных раздвижных и складных систем.
         </p>
@@ -318,19 +317,18 @@ const DetailsSection = () => (
             Разновидности фурнитуры:
           </h2>
           <h3 className="mt-5 text-lg font-bold text-slate-950">
-            Фурнитура Roto для алюминиевых окон и дверей от «Мир Окон» -
-            качество, проверенное временем
+            Фурнитура для алюминиевых окон и дверей от «Мир Окон» - качество,
+            проверенное временем
           </h3>
           <p className="mt-4 text-base leading-8 text-slate-600">
             Мы поставляем решения для поворотных, поворотно-откидных, раздвижных
-            и складных систем. Фурнитура Roto сочетает стабильную работу
-            механизмов, аккуратный внешний вид и устойчивость к интенсивной
-            эксплуатации.
+            и складных систем. Фурнитура сочетает стабильную работу механизмов,
+            аккуратный внешний вид и устойчивость к интенсивной эксплуатации.
           </p>
         </div>
         <div>
           <h2 className="text-3xl font-semibold tracking-tight text-[#0369a1]">
-            Почему стоит выбрать фурнитуру Roto от «Мир Окон»?
+            Почему стоит выбрать фурнитуру от «Мир Окон»?
           </h2>
           <p className="mt-4 text-base leading-8 text-slate-600">
             Клиенты получают проверенное качество, консультации специалистов,
@@ -340,7 +338,7 @@ const DetailsSection = () => (
           </p>
           <p className="mt-4 text-base leading-8 text-slate-600">
             <span className="font-bold text-slate-950">
-              Где купить фурнитуру Roto?
+              Где купить фурнитуру от «Мир Окон»?
             </span>{' '}
             Свяжитесь с нами, и мы подберем стандартный или индивидуальный
             комплект с доставкой по всей России.
@@ -470,7 +468,7 @@ const FooterList = ({ title, items }: { title: string; items: string[] }) => (
   </div>
 );
 
-export const RotoPage = () => (
+export const FurniturePage = () => (
   <div className="min-h-screen bg-white text-slate-950">
     <SiteHeader />
     <div aria-hidden="true" className="h-28 lg:h-[12.5rem]" />

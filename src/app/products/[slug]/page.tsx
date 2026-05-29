@@ -7,9 +7,9 @@ import {
   PageHero,
   PageSection,
   PageShell,
-} from '@/components/roto/PagePrimitives';
+} from '@/components/furniture/PagePrimitives';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { getProductBySlug, products } from '@/config/roto-page';
+import { getProductBySlug, products } from '@/config/furniture-page';
 import { cn } from '@/lib/utils';
 
 type ProductPageProps = {
