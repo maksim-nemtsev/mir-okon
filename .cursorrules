@@ -25,8 +25,7 @@
 * Keep components small
 * Separate UI and business logic
 * Use modular scss files for example app.module.scss
-* For each .tsx file create a matching .test.tsx file and write tests for it. Always run tests before build
-* For each file .tsx you do .test.tsx and write a test for that fall there. Always run tests before build
+* Do not create test files
 
 ## Styling
 
