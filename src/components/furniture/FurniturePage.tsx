@@ -18,11 +18,13 @@ import {
   articles,
   contactItems,
   footerColumns,
+  mainCategories,
   navItems,
-  products,
+  getProductsByCategory,
   furnitureFeatures,
   utilityLinks,
   type ArticleCard,
+  type MainCategory,
   type ProductCard,
 } from '@/config/furniture-page';
 import { Badge } from '@/components/ui/badge';
@@ -171,38 +173,40 @@ const SiteHeader = () => {
 };
 
 const HeroSection = () => (
-  <section className="relative overflow-hidden bg-slate-900">
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(14,165,233,0.32),transparent_32%),linear-gradient(135deg,#111827_0%,#1f2937_52%,#111827_100%)]" />
-    <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.08)_0_1px,transparent_1px_90px)]" />
-    <div className="absolute inset-y-0 right-0 hidden w-[45%] bg-white [clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)] lg:block" />
+  <section className="relative overflow-hidden bg-[#eef7fd]">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(255,255,255,0.75),transparent_38%),radial-gradient(circle_at_22%_72%,rgba(125,211,252,0.35),transparent_42%),linear-gradient(165deg,#f8fcff_0%,#e8f4fc_38%,#d9eeff_72%,#cfe8fb_100%)]" />
+    <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.35)_0_1px,transparent_1px_90px)]" />
+    <div className="absolute inset-y-0 right-0 hidden w-[45%] bg-[#f5fbff] [clip-path:polygon(18%_0,100%_0,100%_100%,0_100%)] lg:block" />
     <Container className="relative grid min-h-[480px] items-center gap-10 py-16 lg:grid-cols-[1fr_0.75fr]">
       <motion.div
-        className="max-w-3xl text-white"
+        className="max-w-3xl text-sky-950"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55 }}
       >
-        <p className="mb-8 text-xs text-white/70">
-          Главная &gt; Алюминиевый профиль в ассортименте &gt; Фурнитура &gt;
-          Фурнитура
-        </p>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-          Фурнитура
+        <h1 className="text-4xl font-bold tracking-tight text-sky-950 sm:text-5xl lg:text-6xl">
+          В ассортименте
         </h1>
-        <p className="mt-6 max-w-2xl text-base leading-8 text-white/75">
-          Надежные комплектующие для алюминиевых окон, дверей и светопрозрачных
-          конструкций от официального дилера.
-        </p>
+        <ul className="mt-8 max-w-2xl space-y-4">
+          {mainCategories.map(({ category, brands, slug }) => (
+            <li key={slug} className="text-base leading-7 sm:text-lg">
+              <a href={`#${slug}`} className="transition hover:text-[#0284c7]">
+                <span className="font-semibold text-sky-950">{category}</span>
+                <span className="text-slate-700"> — {brands}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </motion.div>
       <motion.div
-        className="relative min-h-72 overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-slate-200"
+        className="relative min-h-72 overflow-hidden rounded-3xl bg-white shadow-[0_20px_50px_-12px_rgba(56,189,248,0.28)] ring-1 ring-sky-100"
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.55, delay: 0.1 }}
       >
         <Image
-          src="/images/Screenshot_2.png"
-          alt="Фурнитура для алюминиевых конструкций"
+          src="/images/main-big.png"
+          alt="Продукция Мир Окон"
           fill
           className="object-cover object-[78%_52%]"
           sizes="(min-width: 1024px) 520px, 100vw"
@@ -212,57 +216,107 @@ const HeroSection = () => (
   </section>
 );
 
-const IntroSection = () => (
-  <motion.section id="articles" className="bg-white py-16" {...sectionMotion}>
-    <Container className="grid gap-10 lg:grid-cols-[0.35fr_0.65fr] lg:items-center">
-      <Card className="rounded-3xl border-slate-200 bg-white p-8">
-        <p className="text-5xl font-black tracking-tight text-[#0284c7]">
-          Stublina
-        </p>
-        <div className="mt-6 grid gap-4">
-          {furnitureFeatures.map(({ label, icon: Icon }) => (
-            <div key={label} className="flex items-center gap-3 text-[#0284c7]">
-              <span className="rounded-full bg-sky-50 p-2">
-                <Icon className="h-5 w-5" />
-              </span>
-              <span className="text-base font-semibold">{label}</span>
-            </div>
-          ))}
+const CategoryBlock = ({
+  category,
+  reversed = false,
+  children,
+}: {
+  category: MainCategory;
+  reversed?: boolean;
+  children?: React.ReactNode;
+}) => (
+  <motion.section
+    id={category.slug}
+    className={cn('py-16', reversed ? 'bg-slate-50' : 'bg-white')}
+    {...sectionMotion}
+  >
+    <Container>
+      <div
+        className={cn(
+          'grid items-center gap-10 lg:grid-cols-2',
+          reversed && 'lg:[&>*:first-child]:order-2'
+        )}
+      >
+        <div className="relative min-h-72 overflow-hidden rounded-3xl border border-slate-200 bg-slate-100 shadow-sm lg:min-h-96">
+          <Image
+            src={category.image}
+            alt={category.category}
+            fill
+            className={cn('object-cover', category.imagePosition)}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+          />
         </div>
-      </Card>
-      <div>
-        <div className="grid gap-4 sm:grid-cols-3">
-          {['object-[25%_58%]', 'object-[50%_58%]', 'object-[78%_58%]'].map(
-            (position) => (
-              <div
-                key={position}
-                className="relative min-h-48 overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm"
-              >
-                <Image
-                  src="/images/Screenshot_2.png"
-                  alt="Механизм алюминиевой фурнитуры"
-                  fill
-                  className={cn('object-cover', position)}
-                  sizes="(min-width: 640px) 33vw, 100vw"
-                />
-              </div>
-            )
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-wide text-slate-800">
+            {category.brands}
+          </p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+            {category.category}
+          </h2>
+          <p className="mt-5 text-base leading-8 text-slate-600">
+            {category.description}
+          </p>
+          {category.slug === 'furniture' ? (
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              {furnitureFeatures.map(({ label, icon: Icon }) => (
+                <div
+                  key={label}
+                  className="flex items-center gap-3 text-[#0284c7]"
+                >
+                  <span className="rounded-full bg-sky-50 p-2">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className="text-sm font-semibold">{label}</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <ul className="mt-6 grid gap-2">
+              {category.highlights.map((highlight) => (
+                <li
+                  key={highlight}
+                  className="flex items-start gap-2 text-sm leading-7 text-slate-600"
+                >
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0284c7]" />
+                  {highlight}
+                </li>
+              ))}
+            </ul>
           )}
         </div>
-        <p className="mt-8 text-sm leading-7 text-slate-600">
-          Компания «Мир Окон» является официальным дилером компании и предлагает
-          широкий ассортимент фурнитуры для алюминиевых конструкций.
-        </p>
       </div>
+      {children}
     </Container>
   </motion.section>
+);
+
+const CategoryBlocksSection = () => (
+  <>
+    {mainCategories.map((category, index) => {
+      const categoryProducts = getProductsByCategory(category.slug);
+
+      return (
+        <CategoryBlock
+          key={category.slug}
+          category={category}
+          reversed={index % 2 === 1}
+        >
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {categoryProducts.map((product) => (
+              <ProductCard key={product.slug} product={product} />
+            ))}
+          </div>
+        </CategoryBlock>
+      );
+    })}
+  </>
 );
 
 const ProductCard = ({ product }: { product: ProductCard }) => (
   <Card className="flex h-full flex-col rounded-3xl border-slate-200 bg-white p-4 transition hover:-translate-y-1 hover:shadow-xl">
     <div className="relative min-h-44 overflow-hidden rounded-2xl bg-slate-100">
       <Image
-        src="/images/Screenshot_3.png"
+        src={product.image}
         alt={product.title}
         fill
         className={cn('object-cover', product.imagePosition)}
@@ -274,7 +328,7 @@ const ProductCard = ({ product }: { product: ProductCard }) => (
     </CardHeader>
     <CardContent className="flex-1 px-0 pb-0 pt-5">
       <div className="grid gap-3">
-        <Button asChild variant="secondary">
+        <Button asChild variant="sky">
           <Link href={`/products/${product.slug}`}>Узнать больше</Link>
         </Button>
       </div>
@@ -283,70 +337,6 @@ const ProductCard = ({ product }: { product: ProductCard }) => (
       </p>
     </CardContent>
   </Card>
-);
-
-const ProductsSection = () => (
-  <motion.section
-    id="products"
-    className="bg-slate-50 py-16"
-    {...sectionMotion}
-  >
-    <Container>
-      <div className="mx-auto max-w-3xl text-center">
-        <p className="text-sm leading-7 text-slate-600">
-          Компания «Мир Окон» предлагает широкий ассортимент фурнитуры для
-          алюминиевых конструкций: от классических оконных решений до
-          современных раздвижных и складных систем.
-        </p>
-      </div>
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {products.map((product) => (
-          <ProductCard key={product.title} product={product} />
-        ))}
-      </div>
-    </Container>
-  </motion.section>
-);
-
-const DetailsSection = () => (
-  <motion.section id="details" className="bg-white py-16" {...sectionMotion}>
-    <Container className="max-w-5xl">
-      <div className="space-y-8">
-        <div>
-          <h2 className="text-3xl font-semibold tracking-tight text-[#0369a1]">
-            Разновидности фурнитуры:
-          </h2>
-          <h3 className="mt-5 text-lg font-bold text-slate-950">
-            Фурнитура для алюминиевых окон и дверей от «Мир Окон» - качество,
-            проверенное временем
-          </h3>
-          <p className="mt-4 text-base leading-8 text-slate-600">
-            Мы поставляем решения для поворотных, поворотно-откидных, раздвижных
-            и складных систем. Фурнитура сочетает стабильную работу механизмов,
-            аккуратный внешний вид и устойчивость к интенсивной эксплуатации.
-          </p>
-        </div>
-        <div>
-          <h2 className="text-3xl font-semibold tracking-tight text-[#0369a1]">
-            Почему стоит выбрать фурнитуру от «Мир Окон»?
-          </h2>
-          <p className="mt-4 text-base leading-8 text-slate-600">
-            Клиенты получают проверенное качество, консультации специалистов,
-            выгодные условия поставки и комплектацию под особенности проекта.
-            Изделия подходят для российских условий эксплуатации и коммерческих
-            объектов с высокой нагрузкой.
-          </p>
-          <p className="mt-4 text-base leading-8 text-slate-600">
-            <span className="font-bold text-slate-950">
-              Где купить фурнитуру от «Мир Окон»?
-            </span>{' '}
-            Свяжитесь с нами, и мы подберем стандартный или индивидуальный
-            комплект с доставкой по всей России.
-          </p>
-        </div>
-      </div>
-    </Container>
-  </motion.section>
 );
 
 const ArticleCard = ({ article }: { article: ArticleCard }) => (
@@ -366,10 +356,10 @@ const ArticleCard = ({ article }: { article: ArticleCard }) => (
       <p className="mt-4 text-sm text-slate-400">{article.date}</p>
     </CardHeader>
     <CardFooter>
-      <Button asChild variant="slate">
+      <Button asChild variant="sky" className="gap-2">
         <Link href={`/articles/${article.slug}`}>
           Узнать больше
-          <ArrowRight className="h-4 w-4" />
+          <ArrowRight className="relative top-px h-4 w-4" />
         </Link>
       </Button>
     </CardFooter>
@@ -474,9 +464,7 @@ export const FurniturePage = () => (
     <div aria-hidden="true" className="h-28 lg:h-[12.5rem]" />
     <main>
       <HeroSection />
-      <IntroSection />
-      <ProductsSection />
-      <DetailsSection />
+      <CategoryBlocksSection />
       <ArticlesSection />
     </main>
     <SiteFooter />

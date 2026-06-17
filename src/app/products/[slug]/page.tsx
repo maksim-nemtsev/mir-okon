@@ -43,7 +43,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <Card className="overflow-hidden rounded-3xl border-slate-200 bg-white">
             <div className="relative min-h-80 bg-slate-100">
               <Image
-                src="/images/Screenshot_3.png"
+                src={product.image}
                 alt={product.title}
                 fill
                 className={cn('object-cover', product.imagePosition)}

@@ -23,7 +23,7 @@ const facts = [
   {
     title: 'Проверенные бренды',
     description:
-      'Используем фурнитуру Roto и совместимые комплектующие для надежных конструкций.',
+      'Используем фурнитуру Stublina и совместимые комплектующие для надежных конструкций.',
     icon: Award,
   },
 ] as const;
@@ -33,8 +33,9 @@ export default function AboutPage() {
     <PageShell>
       <PageHero
         eyebrow="О компании"
-        title="Мир Окон для алюминиевых конструкций"
+        title="Мир Окон"
         description="Помогаем производителям, архитекторам и подрядчикам подбирать профильные системы и фурнитуру под требования современных объектов."
+        withImage
       />
       <PageSection>
         <div className="grid gap-6 lg:grid-cols-3">

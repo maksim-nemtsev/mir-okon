@@ -21,8 +21,9 @@ export default function ProductsPage() {
     <PageShell>
       <PageHero
         eyebrow="Продукция"
-        title="Фурнитура Roto для алюминиевых систем"
+        title="Фурнитура для алюминиевых систем"
         description="Каталог ключевых решений для оконных, дверных, раздвижных и складных светопрозрачных конструкций."
+        withImage
       />
       <PageSection>
         <div className="grid gap-6 lg:grid-cols-4">
@@ -40,10 +41,10 @@ export default function ProductsPage() {
                 </p>
               </CardContent>
               <CardFooter>
-                <Button asChild variant="link" className="px-0 text-[#0284c7]">
+                <Button asChild variant="sky" className="w-full gap-2">
                   <Link href={`/products/${product.slug}`}>
                     Узнать больше
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="relative top-px h-4 w-4" />
                   </Link>
                 </Button>
               </CardFooter>

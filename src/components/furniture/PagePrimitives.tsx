@@ -1,5 +1,6 @@
 import type { LucideIcon } from 'lucide-react';
 import { ArrowLeft } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 
@@ -27,12 +28,29 @@ export const PageContainer = ({
 );
 
 export const BackHomeButton = () => (
-  <Button asChild variant="outline" className="w-fit rounded-full bg-white">
+  <Button
+    asChild
+    variant="outline"
+    className="w-fit gap-2 rounded-full bg-white"
+  >
     <Link href="/">
-      <ArrowLeft className="h-4 w-4" />
+      <ArrowLeft className="relative top-px h-4 w-4" />
       Вернуться на главную
     </Link>
   </Button>
+);
+
+export const PageProductsHeroImage = () => (
+  <div className="relative min-h-72 overflow-hidden rounded-3xl bg-white shadow-[0_20px_50px_-12px_rgba(56,189,248,0.28)] ring-1 ring-sky-100">
+    <Image
+      src="/images/main-big.png"
+      alt="Продукция Мир Окон"
+      fill
+      className="object-cover object-[78%_52%]"
+      sizes="(min-width: 1024px) 520px, 100vw"
+      priority
+    />
+  </div>
 );
 
 export const PageHero = ({
@@ -40,29 +58,40 @@ export const PageHero = ({
   title,
   description,
   minHeight = 'min-h-[360px]',
+  withImage = false,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   minHeight?: string;
+  withImage?: boolean;
 }) => (
   <section className="border-b border-slate-200 bg-slate-50">
     <PageContainer
-      className={cn('flex flex-col justify-center py-16', minHeight)}
+      className={cn(
+        'py-16',
+        minHeight,
+        withImage
+          ? 'grid items-center gap-10 lg:grid-cols-[1fr_0.75fr]'
+          : 'flex flex-col justify-center'
+      )}
     >
-      <BackHomeButton />
-      <Badge
-        variant="outline"
-        className="mt-10 w-fit border-sky-200 bg-sky-50 text-[#0284c7]"
-      >
-        {eyebrow}
-      </Badge>
-      <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl">
-        {title}
-      </h1>
-      <p className="mt-6 max-w-3xl text-base leading-8 text-slate-600">
-        {description}
-      </p>
+      <div className="flex flex-col items-start">
+        <BackHomeButton />
+        <Badge
+          variant="outline"
+          className="mt-3 w-fit border-sky-200 bg-sky-50 text-[#0284c7] lg:mt-4"
+        >
+          {eyebrow}
+        </Badge>
+        <h1 className="mt-5 max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl">
+          {title}
+        </h1>
+        <p className="mt-6 max-w-3xl text-base leading-8 text-slate-600">
+          {description}
+        </p>
+      </div>
+      {withImage ? <PageProductsHeroImage /> : null}
     </PageContainer>
   </section>
 );

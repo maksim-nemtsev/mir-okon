@@ -17,6 +17,7 @@ const buttonVariants = cva(
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         brand: 'bg-[#0284c7] text-white hover:bg-[#0369a1]',
+        sky: 'bg-gradient-to-r from-[#eef7fd] to-[#cfe8fb] text-slate-800 shadow-sm ring-1 ring-sky-100 hover:from-[#e4f2fa] hover:to-[#c5e3f8]',
         slate: 'bg-[#34495e] text-white hover:bg-[#263746]',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',

@@ -1,7 +1,7 @@
 # Мир Окон
 
 <div align="center">
-  <p>Публичный сайт компании «Мир Окон» для презентации фурнитуры Roto и сервисных разделов.</p>
+  <p>Публичный сайт компании «Мир Окон» для презентации фурнитуры Stublina и сервисных разделов.</p>
   
   [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
   [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue)](https://www.typescriptlang.org/)

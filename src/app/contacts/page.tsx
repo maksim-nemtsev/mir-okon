@@ -27,7 +27,7 @@ export default function ContactsPage() {
       <PageHero
         eyebrow="Контакты"
         title="Свяжитесь с Мир Окон"
-        description="Позвоните или напишите нам, чтобы получить консультацию и технические материалы по фурнитуре Roto."
+        description="Позвоните или напишите нам, чтобы получить консультацию и технические материалы по фурнитуре Stublina."
       />
       <PageSection>
         <Card className="mx-auto max-w-3xl rounded-3xl border-slate-200 bg-white">
